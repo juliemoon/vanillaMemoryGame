@@ -31,7 +31,7 @@ grid.setAttribute('class', 'grid');
 // append grid to game(gameboard div)
 game.appendChild(grid);
 
-// loop through array and display img
+// loop through each item in our cards array and display img
 for (let i = 0; i < gameGrid.length; i++) {
   // create div assign it to card
   let card = document.createElement('div'); //create one div each time 
@@ -41,10 +41,20 @@ for (let i = 0; i < gameGrid.length; i++) {
   // create data-name attribute in div to equal cardsArray name
   card.dataset.name = gameGrid[i].name;
 
-  // set div's background img to be cardsArray img
-  card.style.backgroundImage = `url(${gameGrid[i].img})`;
-  // append div to grid sectio
+  // create front-view user will see
+  let front = document.createElement('div');
+  front.classList.add('front'); 
+
+  // create back of the card with images
+  let back = document.createElement('div');
+  back.classList.add('back');
+  back.style.backgroundImage = `url(${gameGrid[i].img})`;
+
+  // append grid (section elem)'s child card to section
   grid.appendChild(card);
+  // append front and back to card
+  card.appendChild(front);
+  card.appendChild(back);
 }
 
 let firstGuess = '';
@@ -112,4 +122,4 @@ grid.addEventListener('click', (e) => {
 });
 // check to see if the two card match
 // if the cards match remove image but don't remove from DOM. Need to preserve the space they occupy
-
+// show the back of the card initially and if the guesses are correct then flip the card
