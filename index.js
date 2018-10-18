@@ -62,6 +62,19 @@ let match = function () {
     selected[i].classList.add('matched');
   }
 }
+// reset game function - set count, previousTarget, first/second Guess to initial state
+let resetGame = function () {
+  firstGuess = '';
+  secondGuess = '';
+  previousTarget = null;
+  count = 0;
+
+  let selected = document.querySelectorAll('.selected');
+  for(let i = 0; i < selected.length; i++) {
+    selected[i].classList.remove('selected');
+  }
+}
+
 // add selected class on initial click
 grid.addEventListener('click', (e) => {
   // target clicked item by using e.target
@@ -89,6 +102,7 @@ grid.addEventListener('click', (e) => {
     // previousTarget will have selected class on it and the new clicked won't have a selected until the end. That's why previous!==clicked
     previousTarget = clicked;
   }
+  // after count is 2 reset the game
 });
 // check to see if the two card match
 // if the cards match remove image but don't remove from DOM. Need to preserve the space they occupy
