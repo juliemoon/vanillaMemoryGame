@@ -99,9 +99,9 @@ grid.addEventListener('click', (e) => {
       if (firstGuess === secondGuess) {
         // Run the match function
         match();
-        resetGuesses();
+        resetGame();
       } else {
-        resetGuesses();
+        resetGame();
       }
     }
     // prevent same element from being clicked twice
