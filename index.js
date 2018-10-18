@@ -52,6 +52,7 @@ let secondGuess = '';
 
 // limit user's ability to click on only two cards at a time 
 let count = 0; //count needs to be outside of the eventListener or just increments to 1 no matter how many times clicked...???
+let previousTarget = null;
 
 // add Match CSS
 let match = function () {
@@ -64,9 +65,9 @@ let match = function () {
 // add selected class on initial click
 grid.addEventListener('click', (e) => {
   // target clicked item by using e.target
-  var clicked = e.target;
+  let clicked = e.target;
   // work around adding blue border to anything else but the card - check the nodename clicked.nodeName
-  if (clicked.nodeName !== 'DIV') {
+  if (clicked.nodeName !== 'DIV' || clicked === previousTarget || clicked.parentNode.classList.contains('matched') || clicked.parentNode.classList.contains('selected')) {
     return;
   }
   // only let users choose 2 cards
@@ -84,9 +85,11 @@ grid.addEventListener('click', (e) => {
     if(firstGuess !== '' && secondGuess !=='') {
       firstGuess === secondGuess ? match() : console.log(`not a match`)
     }
+    // prevent same element from being clicked twice
+    // previousTarget will have selected class on it and the new clicked won't have a selected until the end. That's why previous!==clicked
+    previousTarget = clicked;
   }
 });
-
 // check to see if the two card match
 // if the cards match remove image but don't remove from DOM. Need to preserve the space they occupy
 
