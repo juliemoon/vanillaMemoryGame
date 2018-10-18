@@ -53,41 +53,32 @@ let secondGuess = '';
 // limit user's ability to click on only two cards at a time 
 let count = 0; //count needs to be outside of the eventListener or just increments to 1 no matter how many times clicked...???
 
-let addMatchCss = function () {
-  console.log(`inside of matchedCss`)
-  //grab all the elems with selected class
+// add Match CSS
+let match = function () {
+  // take all of the elements with the selected class
   let selected = document.querySelectorAll('.selected');
-  for(let i = 0; i < selected.length; i++) {
-    selected[i].classList.add('matched')
+  for( let i = 0; i < selected.length; i++) {
+
   }
 }
-
-// add match css
-let match = function (){
- firstGuess === secondGuess ? addMatchCss() : console.log(`not a match`)
-  count = 0;
-}
-
 // add selected class on initial click
 grid.addEventListener('click', (e) => {
   // target clicked item by using e.target
   var clicked = e.target;
-
   // work around adding blue border to anything else but the card - check the nodename clicked.nodeName
   if (clicked.nodeName !== 'DIV') {
     return;
   }
   // only let users choose 2 cards
   if (count < 2){
-    // debugger;
     count++;
     if (count === 1) {
       // add selected class to card that was clicked
-      clicked.classList.add('selected');
       firstGuess = clicked.dataset.name;
-    }else if( count === 2 ){
-      clicked.classList.add('selected')
+      clicked.classList.add('selected');
+    } else {
       secondGuess = clicked.dataset.name;
+      clicked.classList.add('selected')
       match();
     }
   }
