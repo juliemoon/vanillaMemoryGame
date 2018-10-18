@@ -96,7 +96,13 @@ grid.addEventListener('click', (e) => {
     }
     // make sure both guesses are not empty
     if(firstGuess !== '' && secondGuess !=='') {
-      firstGuess === secondGuess ? match() : console.log(`not a match`)
+      if (firstGuess === secondGuess) {
+        // Run the match function
+        match();
+        resetGuesses();
+      } else {
+        resetGuesses();
+      }
     }
     // prevent same element from being clicked twice
     // previousTarget will have selected class on it and the new clicked won't have a selected until the end. That's why previous!==clicked
