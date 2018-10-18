@@ -98,10 +98,10 @@ grid.addEventListener('click', (e) => {
     if(firstGuess !== '' && secondGuess !=='') {
       if (firstGuess === secondGuess) {
         // Run the match function
-        match();
-        resetGame();
+        setTimeout(match,1000);
+        setTimeout(resetGame,1000);
       } else {
-        resetGame();
+        setTimeout(resetGame,1000);
       }
     }
     // prevent same element from being clicked twice
