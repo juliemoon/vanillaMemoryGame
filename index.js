@@ -58,7 +58,7 @@ let match = function () {
   // take all of the elements with the selected class
   let selected = document.querySelectorAll('.selected');
   for( let i = 0; i < selected.length; i++) {
-
+    selected[i].classList.add('matched');
   }
 }
 // add selected class on initial click
@@ -79,7 +79,10 @@ grid.addEventListener('click', (e) => {
     } else {
       secondGuess = clicked.dataset.name;
       clicked.classList.add('selected')
-      match();
+    }
+    // make sure both guesses are not empty
+    if(firstGuess !== '' && secondGuess !=='') {
+      firstGuess === secondGuess ? match() : console.log(`not a match`)
     }
   }
 });
