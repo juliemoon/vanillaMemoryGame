@@ -102,9 +102,9 @@ grid.addEventListener('click', (e) => {
     count++;
     if (count === 1) {
       // add selected class to card that was clicked
-      // firstGuess = clicked.dataset.name;
+      // firstGuess = clicked.dataset.name; <== div.front
       // clicked.classList.add('selected');
-      firstGuess = clicked.parentNode.dataset.name;
+      firstGuess = clicked.parentNode.dataset.name; //div.card
       clicked.parentNode.classList.add('selected');
     } else {
       // secondGuess = clicked.dataset.name;
