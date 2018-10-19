@@ -46,9 +46,13 @@ for (let i = 0; i < gameGrid.length; i++) {
   front.classList.add('front'); 
 
   // create back of the card with images
-  let back = document.createElement('div');
-  back.classList.add('back');
-  back.style.backgroundImage = `url(${gameGrid[i].img})`;
+  // let back = document.createElement('div');
+  // back.classList.add('back');
+  // back.style.backgroundImage = `url(${gameGrid[i].img})`;
+    // Create back of card
+    let back = document.createElement('div');
+    back.classList.add('back');
+    back.style.backgroundImage = `url(${gameGrid[i].img})`;
 
   // append grid (section elem)'s child card to section
   grid.appendChild(card);
@@ -98,11 +102,15 @@ grid.addEventListener('click', (e) => {
     count++;
     if (count === 1) {
       // add selected class to card that was clicked
-      firstGuess = clicked.dataset.name;
-      clicked.classList.add('selected');
+      // firstGuess = clicked.dataset.name;
+      // clicked.classList.add('selected');
+      firstGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     } else {
-      secondGuess = clicked.dataset.name;
-      clicked.classList.add('selected')
+      // secondGuess = clicked.dataset.name;
+      // clicked.classList.add('selected')
+      secondGuess = clicked.parentNode.dataset.name;
+      clicked.parentNode.classList.add('selected');
     }
     // make sure both guesses are not empty
     if(firstGuess !== '' && secondGuess !=='') {
